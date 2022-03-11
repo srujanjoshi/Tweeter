@@ -48,19 +48,19 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="Kfc-Zj-RIJ" kind="presentation" identifier="loginToHome" id="N9j-8u-LAX"/>
+                        <segue destination="Kfc-Zj-RIJ" kind="showDetail" identifier="loginToHome" id="N9j-8u-LAX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7G7-Ei-V2i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="165" y="153"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home-->
         <scene sceneID="lSC-1P-3Y8">
             <objects>
-                <tableViewController id="Gvn-Bm-5yo" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="Gvn-Bm-5yo" customClass="HomeTableViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="JXk-Is-ZLG">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -78,7 +78,15 @@
                             <outlet property="delegate" destination="Gvn-Bm-5yo" id="744-4E-oaF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="H4L-cV-02U"/>
+                    <navigationItem key="navigationItem" title="Home" id="H4L-cV-02U">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="QIr-Yi-rMi">
+                            <connections>
+                                <action selector="onLogout:" destination="Gvn-Bm-5yo" id="Zcj-9b-g4W"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2G-PL-tVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,11 +95,27 @@
         <!--Navigation Controller-->
         <scene sceneID="3bE-gf-933">
             <objects>
-                <navigationController id="Kfc-Zj-RIJ" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="Kfc-Zj-RIJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AV4-ro-O8v">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </navigationBarAppearance>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DeX-Ba-4DF">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Gvn-Bm-5yo" kind="relationship" relationship="rootViewController" id="MbZ-t4-A3C"/>
                     </connections>

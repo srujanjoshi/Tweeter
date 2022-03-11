@@ -14,6 +14,12 @@ class LoginViewController: UIViewController {
         let myUrl = "https://api.twitter.com/oauth/request_token"
         TwitterAPICaller.client?.login(url: myUrl, success: {
             self.performSegue(withIdentifier: "loginToHome", sender: self)
+                /*
+                 Writing a little note to ourselves saying that the User has loggen in and to not ask them
+                 to login a second time
+                 */
+            UserDefaults.standard.set(true, forKey: "userLoggedIn")
+                
         }, failure: { Error in
             print("Could not log in")
         })
@@ -24,6 +30,11 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "userLoggedIn") {
+            self.performSegue(withIdentifier: "loginToHome", sender: self)
+        }
+    }
 
     /*
     // MARK: - Navigation
